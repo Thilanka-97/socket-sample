@@ -20,7 +20,7 @@ function App() {
 
 		const connectToGroup = async () => {
 			const userDetails = {
-				groupId,
+				// groupId,
 				groupName,
 				userName
 			};
