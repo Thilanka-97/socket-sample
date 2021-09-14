@@ -8,7 +8,7 @@ Runs the app in the development mode
 
 `node index.js`
 
-# Client (React)
+## Client (React)
 
 Runs the app in the development mode
 
