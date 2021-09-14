@@ -7,9 +7,7 @@ function App() {
 	const [ourDetails, setOurDetails] = useState({});
 	const socket = useRef();
 
-	// let socket;
 	const CONNECTION_PORT = 'http://localhost:4000/';
-	// const socket = io.connect(CONNECTION_PORT);
 
 	useEffect(() => {
 		socket.current = io.connect(CONNECTION_PORT);
@@ -18,7 +16,7 @@ function App() {
 	const LoginPage = () => {
 		const [userName, setUserName] = useState('');
 		const [groupName, setGroupName] = useState('');
-		const [groupId, setGroupId] = useState('');
+		// const [groupId, setGroupId] = useState('');
 
 		const connectToGroup = async () => {
 			const userDetails = {
@@ -51,13 +49,13 @@ function App() {
 					}}
 				/>
 				{/* <input
-          type="text"
-          placeholder="Group id"
-          className="InputField"
-          onChange={(e) => {
-            setGroupId(e.target.value)
-          }}
-        /> */}
+				type="text"
+				placeholder="Group id"
+				className="InputField"
+				onChange={(e) => {
+					setGroupId(e.target.value)
+				}}
+				/> */}
 				<button
 					type='button'
 					className='JoinButton'
@@ -87,9 +85,7 @@ function App() {
 			socket.current.on('receiveMessage', (data) => {
 				console.log(data);
 				console.log('hit msg');
-				// if (data.userName !== ourDetails.userName) {
 				setMessageList([...messageList, data]);
-				// }
 			});
 			socket.current.on('typing', (data) => {
 				const { isTyping, nick } = data;
@@ -132,8 +128,6 @@ function App() {
 			setMessageList([...messageList, messageDetails]);
 			setMessage('');
 			await socket.current.emit('sendMessage', messageDetails);
-
-			// console.log("sendMessage" , res)
 		};
 
 		return (
@@ -164,7 +158,6 @@ function App() {
 							className='MessageInputField'
 							onChange={(e) => {
 								setMessage(e.target.value);
-								// typingMessage(e.target.value);
 							}}
 							value={message}
 						/>
